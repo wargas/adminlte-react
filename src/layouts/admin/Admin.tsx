@@ -1,17 +1,10 @@
 import React from 'react';
+import { Header } from './Header';
 
 export const Admin: React.SFC<AdminProps> = props => {
     return (
         <div className="wrapper layout-fixed">
-            <nav className="main-header navbar navbar-expand navbar-white navbar-light">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <a href="" className="nav-link">
-                            <i className="fas fa-bars"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <Header />
             <aside className="main-sidebar sidebar-dark-primary elevation-4">
                 <a href="" className="brand-link">
                     <img src="https://adminlte.io/themes/v3/dist/img/AdminLTELogo.png" alt="" className="brand-image img-circle elevation-3" />
