@@ -1,15 +1,27 @@
-import React, { createContext, Fragment, useContext, useEffect, useState } from 'react';
+import React, { createContext, Fragment, useContext, useEffect, useRef, useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { Login } from '../../pages/login/Login';
 import { Header } from '../header/Header';
 import { Sidebar } from '../sidebar/Sidebar';
+
+import PerfectScrollbar from 'perfect-scrollbar';
+
+import './Admin.scss';
 
 export const LayoutContext = createContext()
 
 export const Admin = () => {
 
     const [sidebarOpen, setSidebarOpen] = useState(true);
-    const { isLogged } = useAuth()
+    const { isLogged } = useAuth();
+    const contentRef = useRef();
+    let ps = null;
+
+    useEffect(() => {
+        ps = new PerfectScrollbar(contentRef.current);
+
+        return () => ps.destroy();
+    }, [])
 
     useEffect(() => {
         if (!sidebarOpen) {
@@ -32,7 +44,7 @@ export const Admin = () => {
             <div className="wrapper">
                 <Header />
                 <Sidebar />
-                <div className="content-wrapper">
+                <div ref={contentRef} onMouseMove={() => ps.update()} className="content-wrapper">
                     <div className="content-header">
                         <h1 className="mb-0 text-dark">Dashboard</h1>
 

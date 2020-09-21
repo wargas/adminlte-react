@@ -201,10 +201,5 @@ export default {
                 }
             ]
         },
-        {
-            icon: 'circle',
-            link: '/nada',
-            label:  'level A',
-        }
     ]
 }
